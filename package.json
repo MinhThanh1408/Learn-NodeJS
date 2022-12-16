@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon src/index.js",
+    "scss": "sass --watch src/resources/scss/ src/public/css/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,9 +19,14 @@
   },
   "homepage": "https://github.com/MinhThanh1408/Learn-NodeJS#readme",
   "dependencies": {
+    "bootstrap": "^5.2.3",
     "express": "^4.18.2",
+    "express-handlebars": "^6.0.6",
     "expressjs": "^1.0.1",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.20"
+    "node-sass": "^8.0.0",
+    "nodemon": "^2.0.20",
+    "sass": "^1.56.2",
+    "scss": "^0.2.4"
   }
 }

@@ -6,7 +6,17 @@
   "scripts": {
     "start": "nodemon src/index.js",
     "scss": "sass --watch src/resources/scss/ src/public/css/",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prettier": "prettier --single-quote --tab-width 4 --trailing-comma all --write src/*/*.{js,json,scss} "
+  },
+  "lint-staged":{
+    "src/*/*.{js,json,scss}": "prettier --single-quote --tab-width 4 --trailing-comma all --write"
+  },
+  "husky":{
+    "hooks":{
+      "pre-commit": "lint-staged",
+      "pre-push": "npm test"
+    }
   },
   "repository": {
     "type": "git",
@@ -23,9 +33,12 @@
     "express": "^4.18.2",
     "express-handlebars": "^6.0.6",
     "expressjs": "^1.0.1",
+    "husky": "^8.0.2",
+    "lint-staged": "^13.1.0",
     "morgan": "^1.10.0",
     "node-sass": "^8.0.0",
     "nodemon": "^2.0.20",
+    "prettier": "^2.8.1",
     "sass": "^1.56.2",
     "scss": "^0.2.4"
   }

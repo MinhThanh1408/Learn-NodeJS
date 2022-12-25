@@ -1,45 +1,49 @@
 {
-  "name": "learn_nodejs",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "nodemon src/index.js",
-    "scss": "sass --watch src/resources/scss/ src/public/css/",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prettier": "prettier --single-quote --tab-width 4 --trailing-comma all --write src/*/*.{js,json,scss} "
-  },
-  "lint-staged":{
-    "src/*/*.{js,json,scss}": "prettier --single-quote --tab-width 4 --trailing-comma all --write"
-  },
-  "husky":{
-    "hooks":{
-      "pre-commit": "lint-staged",
-      "pre-push": "npm test"
+    "name": "learn_nodejs",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "nodemon src/index.js",
+        "scss": "sass --watch src/resources/scss/ src/public/css/",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "prettier": "prettier --single-quote --tab-width 4 --trailing-comma all --write src/*.{js,json,scss,hbs} --write src/**/*.{js,json,scss,hbs}  "
+    },
+    "lint-staged": {
+        "src/*/*.{js,json,scss}": "prettier --single-quote --tab-width 4 --trailing-comma all --write"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged",
+            "pre-push": "npm test"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/MinhThanh1408/Learn-NodeJS.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/MinhThanh1408/Learn-NodeJS/issues"
+    },
+    "homepage": "https://github.com/MinhThanh1408/Learn-NodeJS#readme",
+    "dependencies": {
+        "bootstrap": "^5.2.3",
+        "express": "^4.18.2",
+        "express-handlebars": "^6.0.6",
+        "expressjs": "^1.0.1",
+        "husky": "^8.0.2",
+        "lint-staged": "^13.1.0",
+        "method-override": "^3.0.0",
+        "mongoose": "^6.8.0",
+        "mongoose-delete": "^0.5.4",
+        "mongoose-slug-generator": "^1.0.4",
+        "morgan": "^1.10.0",
+        "node-sass": "^8.0.0",
+        "nodemon": "^2.0.20",
+        "prettier": "^2.8.1",
+        "sass": "^1.56.2",
+        "scss": "^0.2.4"
     }
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MinhThanh1408/Learn-NodeJS.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/MinhThanh1408/Learn-NodeJS/issues"
-  },
-  "homepage": "https://github.com/MinhThanh1408/Learn-NodeJS#readme",
-  "dependencies": {
-    "bootstrap": "^5.2.3",
-    "express": "^4.18.2",
-    "express-handlebars": "^6.0.6",
-    "expressjs": "^1.0.1",
-    "husky": "^8.0.2",
-    "lint-staged": "^13.1.0",
-    "morgan": "^1.10.0",
-    "node-sass": "^8.0.0",
-    "nodemon": "^2.0.20",
-    "prettier": "^2.8.1",
-    "sass": "^1.56.2",
-    "scss": "^0.2.4"
-  }
 }

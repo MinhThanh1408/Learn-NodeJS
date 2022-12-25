@@ -1,0 +1,94 @@
+<div class='mt-4'>
+    <h3>My Courses</h3>
+    <a href="/me/recycle/courses">Recycle Bin ({{deletedCount}})</a>
+    <div class='row'>
+        {{#each courses}}
+        <div class='col-sm-6 col-lg-4 mt-2'>
+            <div class='card' style='width: 18rem;'>
+                <a href='/courses/{{this.slug}}'>
+                    <img
+                        src='{{this.image}}'
+                        class='card-img-top'
+                        alt='...'
+                        />
+                </a>
+                <div class='card-body'>
+                    <a href='/courses/{{this.slug}}'>
+                        <h5 class='card-title'>{{this.name}}</h5>
+                    </a>
+                    <p class='card-text'>{{this.description}}</p>
+                    <a
+                        href='/courses/{{this._id}}/edit'
+                        class='btn btn-primary'>Edit</a>
+                    <button
+                        type='button'
+                        class='btn btn-danger'
+                        data-bs-toggle='modal'
+                        data-bs-target='#confirm-delete'
+                        that-id='{{this._id}}'>
+                        Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+        {{else}}
+        <h2 class="text-center">Vui lòng tạo khoá học.</h2>
+        <a href="/courses/create" class="text-center">Đăng khoá học thôi nào.</a>
+        {{/each}}
+    </div>
+</div>
+
+{{! Confirm Delete Course }}
+<!-- Modal -->
+<div
+    class='modal fade'
+    id='confirm-delete'
+    tabindex='-1'
+    aria-labelledby='exampleModalLabel'
+    aria-hidden='true'>
+    <div class='modal-dialog'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <h1 class='modal-title fs-5' id='exampleModalLabel'>Modal title</h1>
+                <button
+                    type='button'
+                    class='btn-close'
+                    data-bs-dismiss='modal'
+                    aria-label='Close'></button>
+            </div>
+            <div class='modal-body'>
+                Are you sure you want to delete this course?
+            </div>
+            <div class='modal-footer'>
+                <button
+                    type='button'
+                    class='btn btn-secondary'
+                    data-bs-dismiss='modal'>Close</button>
+                <button
+                    type='button'
+                    class='btn btn-primary'
+                    id='button-delete-course'>Yes, I want to delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+<form method='POST' name='delete-course-form'></form>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function(){
+        let courseId; 
+        const confirmDelete = document.getElementById('confirm-delete');
+        let formDelete = document.forms['delete-course-form'];
+
+        confirmDelete.addEventListener('show.bs.modal', event => { 
+            const button = event.relatedTarget; 
+            courseId = button.getAttribute('that-id'); 
+        });
+
+        const buttonDeleteCourse = document.querySelector('#button-delete-course');
+        buttonDeleteCourse.onclick = () => {
+            formDelete.action = `/courses/${courseId}?_method=DELETE`;
+            formDelete.submit();
+        }
+    })
+</script>
